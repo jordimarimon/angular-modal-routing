@@ -17,17 +17,36 @@ import { RouterModule } from '@angular/router';
 
             <nav class="flex w-full my-4">
                 <ul class="flex items-center gap-4 w-full">
-                    <li class="cursor-pointer underline text-neutral-600">
-                        <a routerLink="/page-2">Go to Page 2</a>
+                    <li
+                        class="cursor-pointer underline text-neutral-600"
+                        routerLink="/"
+                        [routerLinkActive]="['font-bold', 'text-neutral-900']"
+                        [routerLinkActiveOptions]="{exact: true}"
+                    >
+                        <a>Go to Home</a>
                     </li>
 
-                    <li class="cursor-pointer underline text-neutral-600">
-                        <a routerLink="/page-3">Go to Page 3</a>
+                    <li
+                        class="cursor-pointer underline text-neutral-600"
+                        routerLink="/page-2"
+                        [routerLinkActive]="['font-bold', 'text-neutral-900']"
+                    >
+                        <a>Go to Page 2</a>
+                    </li>
+
+                    <li
+                        class="cursor-pointer underline text-neutral-600"
+                        routerLink="/page-3"
+                        [routerLinkActive]="['font-bold', 'text-neutral-900']"
+                    >
+                        <a>Go to Page 3</a>
                     </li>
                 </ul>
             </nav>
 
-            <router-outlet></router-outlet>
+            <section class="p-4 border border-neutral-200">
+                <router-outlet></router-outlet>
+            </section>
         </main>
 
 
@@ -35,7 +54,6 @@ import { RouterModule } from '@angular/router';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-
 
 
 }

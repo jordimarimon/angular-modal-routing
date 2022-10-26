@@ -1,8 +1,7 @@
 import { enableProdMode, importProvidersFrom } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
-import { RouterModule, UrlSerializer } from '@angular/router';
-
-import { CustomUrlSerializer } from './app/custom-url-serializer';
+import { RouterModule } from '@angular/router';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { environment } from './environments/environment';
 import { AppComponent } from './app/app.component';
 import { APP_ROUTES } from './app/routes';
@@ -15,6 +14,6 @@ if (environment.production) {
 bootstrapApplication(AppComponent, {
     providers: [
         importProvidersFrom(RouterModule.forRoot(APP_ROUTES)),
-        { provide: UrlSerializer, useClass: CustomUrlSerializer },
+        {provide: LocationStrategy, useClass: HashLocationStrategy},
     ],
 }).catch(err => console.error(err));

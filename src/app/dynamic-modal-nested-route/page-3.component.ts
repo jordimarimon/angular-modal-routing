@@ -19,7 +19,7 @@ import { Modal3Component, OVERLAY_REF } from './modal-3.component';
     ],
     selector: 'app-page-3',
     template: `
-        <h2 class="text-lg font-bold my-6">
+        <h2 class="text-lg font-bold mb-6">
             Page with modal 3
         </h2>
 

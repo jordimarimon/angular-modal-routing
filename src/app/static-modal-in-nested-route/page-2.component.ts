@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 import { Modal2Component } from './modal-2.component';
 
@@ -12,7 +12,7 @@ import { Modal2Component } from './modal-2.component';
     ],
     selector: 'app-page-2',
     template: `
-        <h2 class="text-lg font-bold my-6">
+        <h2 class="text-lg font-bold mb-6">
             Page with modal 2
         </h2>
 
@@ -28,7 +28,26 @@ import { Modal2Component } from './modal-2.component';
     `,
 })
 
-export class Page2Component {
+export class Page2Component implements AfterViewInit {
+
+    @ViewChild(Modal2Component) modalEl?: Modal2Component;
+
+    constructor(
+        private _router: Router,
+        private _route: ActivatedRoute,
+    ) {
+    }
+
+    ngAfterViewInit(): void {
+        const outletPath = this._route.snapshot.children[0]?.routeConfig?.path ?? '';
+        const outletName = this._route.snapshot.children[0]?.routeConfig?.outlet ?? '';
+
+        if (!outletPath || outletName !== 'modal-2') {
+            return;
+        }
+
+        this.modalEl?.show();
+    }
 
 
 }
