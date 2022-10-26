@@ -12,4 +12,9 @@ export const APP_ROUTES: Routes = [
         loadChildren: () => import('./static-modal-in-nested-route/routes').then(mod => mod.ROUTES),
     },
 
+    {
+        path: 'page-3',
+        loadChildren: () => import('./dynamic-modal-nested-route/routes').then(mod => mod.ROUTES),
+    },
+
 ];

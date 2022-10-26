@@ -3,10 +3,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
     standalone: true,
-    selector: 'app-view-1',
+    selector: 'app-view-2-1',
     template: `
         <div class="w-full h-full bg-amber-200">
-            <h1>View 1</h1>
+            <h1>View 2-1</h1>
         </div>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,

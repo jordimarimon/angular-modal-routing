@@ -16,9 +16,13 @@ import { RouterModule } from '@angular/router';
             </h1>
 
             <nav class="flex w-full my-4">
-                <ul class="flex items-center w-full">
+                <ul class="flex items-center gap-4 w-full">
                     <li class="cursor-pointer underline text-neutral-600">
                         <a routerLink="/page-2">Go to Page 2</a>
+                    </li>
+
+                    <li class="cursor-pointer underline text-neutral-600">
+                        <a routerLink="/page-3">Go to Page 3</a>
                     </li>
                 </ul>
             </nav>
