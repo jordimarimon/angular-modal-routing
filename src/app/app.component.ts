@@ -15,6 +15,14 @@ import { RouterModule } from '@angular/router';
                 Modals with routing!
             </h1>
 
+            <nav class="flex w-full my-4">
+                <ul class="flex items-center w-full">
+                    <li class="cursor-pointer underline text-neutral-600">
+                        <a routerLink="/page-2">Go to Page 2</a>
+                    </li>
+                </ul>
+            </nav>
+
             <router-outlet></router-outlet>
         </main>
 

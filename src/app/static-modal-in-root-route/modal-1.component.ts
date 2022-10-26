@@ -1,18 +1,18 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { View1Component } from './view-1.component';
-import { View2Component } from './view-2.component';
-import { View3Component } from './view-3.component';
+import { View11Component } from './view-1-1.component';
+import { View12Component } from './view-1-2.component';
+import { View13Component } from './view-1-3.component';
 
 
 @Component({
     standalone: true,
     imports: [
         RouterModule,
-        View1Component,
-        View2Component,
-        View3Component,
+        View11Component,
+        View12Component,
+        View13Component,
     ],
     selector: 'app-static-modal-in-root-route',
     template: `
@@ -24,7 +24,7 @@ import { View3Component } from './view-3.component';
             Open Modal 1
         </button>
 
-        <dialog #dialog class="shadow-md border-4 border-blue-400">
+        <dialog #dialog class="shadow-lg border-4 border-blue-400">
 
             <section class="flex flex-col w-80 h-80">
                 <button
@@ -37,15 +37,27 @@ import { View3Component } from './view-3.component';
 
                 <ul class="flex items-center gap-4 mb-4">
 
-                    <li class="flex items-center px-4 -py-2" [routerLink]="['/', {outlets: {'modal-1': ['view-1']}}]">
+                    <li
+                        class="flex items-center px-4 -py-2"
+                        [routerLink]="['/', {outlets: {'modal-1': ['view-1']}}]"
+                        [routerLinkActive]="['underline', 'font-bold']"
+                    >
                         <button>Tab 1</button>
                     </li>
 
-                    <li class="flex items-center  px-4 -py-2" [routerLink]="['/', {outlets: {'modal-1': ['view-2']}}]">
+                    <li
+                        class="flex items-center  px-4 -py-2"
+                        [routerLink]="['/', {outlets: {'modal-1': ['view-2']}}]"
+                        [routerLinkActive]="['underline', 'font-bold']"
+                    >
                         <button>Tab 2</button>
                     </li>
 
-                    <li class="flex items-center px-4 -py-2" [routerLink]="['/', {outlets: {'modal-1': ['view-3']}}]">
+                    <li
+                        class="flex items-center px-4 -py-2"
+                        [routerLink]="['/', {outlets: {'modal-1': ['view-3']}}]"
+                        [routerLinkActive]="['underline', 'font-bold']"
+                    >
                         <button>Tab 3</button>
                     </li>
 
@@ -61,6 +73,6 @@ import { View3Component } from './view-3.component';
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ModalComponent {
+export class Modal1Component {
 
 }

@@ -5,11 +5,13 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     standalone: true,
     selector: 'app-view-1',
     template: `
-        <h1>View 1</h1>
+        <div class="w-full h-full bg-orange-200">
+            <h1>View 1</h1>
+        </div>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class View1Component {
+export class View11Component {
 
 
 
