@@ -1,29 +1,14 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, ViewChild } from '@angular/core';
 import { RouterModule } from '@angular/router';
-
-import { View11Component } from './view-1-1.component';
-import { View12Component } from './view-1-2.component';
-import { View13Component } from './view-1-3.component';
 
 
 @Component({
     standalone: true,
     imports: [
         RouterModule,
-        View11Component,
-        View12Component,
-        View13Component,
     ],
-    selector: 'app-static-modal-in-root-route',
+    selector: 'app-modal-1',
     template: `
-        <button
-            class="px-4 py-2 bg-blue-600 text-neutral-50"
-            [routerLink]="['/', {outlets: {'modal-1': ['view-1']}}]"
-            (click)="dialog.show()"
-        >
-            Open Modal 1
-        </button>
-
         <dialog #dialog class="shadow-lg border-4 border-blue-400">
 
             <section class="flex flex-col w-80 h-80">
@@ -74,5 +59,11 @@ import { View13Component } from './view-1-3.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Modal1Component {
+
+    @ViewChild('dialog') dialogEl?: ElementRef<HTMLDialogElement>;
+
+    show() {
+        this.dialogEl?.nativeElement.show();
+    }
 
 }

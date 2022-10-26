@@ -1,33 +1,30 @@
 
 import { Route } from '@angular/router';
 
-import { Modal2Component } from './modal-2.component';
-import { View21Component } from './view-2-1.component';
-import { View22Component } from './view-2-2.component';
-import { View23Component } from './view-2-3.component';
+import { Page2Component } from './page-2.component';
 
 
 export const ROUTES: Route[] = [
     {
         path: '',
-        component: Modal2Component,
+        component: Page2Component,
         children: [
             {
                 path: 'view-1',
                 outlet: 'modal-2',
-                component: View21Component,
+                loadComponent: () => import('./view-2-1.component').then(mod => mod.View21Component),
             },
 
             {
                 path: 'view-2',
                 outlet: 'modal-2',
-                component: View22Component,
+                loadComponent: () => import('./view-2-2.component').then(mod => mod.View22Component),
             },
 
             {
                 path: 'view-3',
                 outlet: 'modal-2',
-                component: View23Component,
+                loadComponent: () => import('./view-2-3.component').then(mod => mod.View23Component),
             },
         ],
     },
