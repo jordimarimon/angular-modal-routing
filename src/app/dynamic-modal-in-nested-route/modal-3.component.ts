@@ -1,8 +1,7 @@
-import { Component, Inject, InjectionToken } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { OVERLAY_REF } from '../modal.service';
 
-
-export const OVERLAY_REF = new InjectionToken('OverlayRef');
 
 @Component({
     standalone: true,

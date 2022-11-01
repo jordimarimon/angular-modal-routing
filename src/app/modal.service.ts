@@ -1,39 +1,20 @@
-import { RouterModule } from '@angular/router';
 import {
     ApplicationRef,
-    Component,
     createComponent,
     EmbeddedViewRef,
     EnvironmentInjector,
+    Injectable,
+    InjectionToken,
     Injector,
     StaticProvider,
+    Type,
 } from '@angular/core';
 
-import { Modal3Component, OVERLAY_REF } from './modal-3.component';
 
+export const OVERLAY_REF = new InjectionToken('OverlayRef');
 
-@Component({
-    standalone: true,
-    imports: [
-        RouterModule,
-    ],
-    selector: 'app-page-3',
-    template: `
-        <h2 class="text-lg font-bold mb-6">
-            Page with modal 3
-        </h2>
-
-        <button
-            class="px-4 py-2 bg-blue-600 text-neutral-50"
-            [routerLink]="['/page-3', {outlets: {'modal-3': ['view-1']}}]"
-            (click)="show()"
-        >
-            Open Modal 3
-        </button>
-    `,
-})
-
-export class Page3Component {
+@Injectable()
+export class ModalService {
 
     constructor(
         private _environmentInjector: EnvironmentInjector,
@@ -42,13 +23,13 @@ export class Page3Component {
     ) {
     }
 
-    show(): void {
+    showModal<C>(component: Type<C>): void {
         const dialog = document.createElement('dialog');
         const providers: StaticProvider[] = [
             {
                 provide: OVERLAY_REF,
                 useValue: dialog,
-            }
+            },
         ];
 
         const injector = Injector.create({
@@ -56,7 +37,7 @@ export class Page3Component {
             providers,
         });
 
-        const componentRef = createComponent(Modal3Component, {
+        const componentRef = createComponent(component, {
             environmentInjector: this._environmentInjector,
             elementInjector: injector,
         });
@@ -64,7 +45,6 @@ export class Page3Component {
         const viewRef = componentRef.hostView as EmbeddedViewRef<unknown>;
 
         this._appRef.attachView(viewRef);
-
         componentRef.changeDetectorRef.reattach();
 
         const nodes = viewRef.rootNodes;
@@ -78,7 +58,7 @@ export class Page3Component {
         dialog.classList.add('shadow-lg', 'border-4', 'border-blue-400');
         document.body.appendChild(dialog);
 
-        dialog.show();
+        dialog.showModal();
     }
 
 }

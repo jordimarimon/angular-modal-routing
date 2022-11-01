@@ -14,7 +14,7 @@ export const APP_ROUTES: Routes = [
 
     {
         path: 'page-3',
-        loadChildren: () => import('./dynamic-modal-nested-route/routes').then(mod => mod.ROUTES),
+        loadChildren: () => import('./dynamic-modal-in-nested-route/routes').then(mod => mod.ROUTES),
     },
 
 ];

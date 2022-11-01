@@ -63,7 +63,7 @@ export class Modal1Component {
     @ViewChild('dialog') dialogEl?: ElementRef<HTMLDialogElement>;
 
     show() {
-        this.dialogEl?.nativeElement.show();
+        this.dialogEl?.nativeElement.showModal();
     }
 
 }
