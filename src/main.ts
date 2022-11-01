@@ -1,7 +1,7 @@
 import { APP_BASE_HREF, HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { enableProdMode, importProvidersFrom } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
+import { PreloadAllModules, RouterModule } from '@angular/router';
 
 import { environment } from './environments/environment';
 import { AppComponent } from './app/app.component';
@@ -13,11 +13,15 @@ if (environment.production) {
 }
 
 const providers = [
-    importProvidersFrom(RouterModule.forRoot(APP_ROUTES)),
+    importProvidersFrom(RouterModule.forRoot(APP_ROUTES, {
+        preloadingStrategy: PreloadAllModules,
+    })),
+
     {
         provide: LocationStrategy,
         useClass: HashLocationStrategy,
     },
+
     {
         provide: APP_BASE_HREF,
         useValue: environment.production ? '/' : '/angular-modal-routing/',
