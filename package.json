@@ -5,10 +5,12 @@
     "scripts": {
         "ng": "ng",
         "start": "ng cache clean && ng serve",
-        "build": "ng build",
+        "build": "ng build --configuration production",
         "test": "ng test",
         "upgrade": "rm -rf node_modules package-lock.json && npm i",
-        "bump": "npx ncu -u"
+        "deploy": "gh-pages -d dist -m \"docs: update demos\"",
+        "bump": "npx ncu -u",
+        "analyse": "webpack-bundle-analyzer ./dist/stats.json"
     },
     "dependencies": {
         "@angular/animations": "^14.2.8",
@@ -28,6 +30,7 @@
         "@angular/cli": "~14.2.7",
         "@angular/compiler-cli": "^14.2.8",
         "@types/jasmine": "~4.3.0",
+        "gh-pages": "^4.0.0",
         "jasmine-core": "~4.4.0",
         "karma": "~6.4.1",
         "karma-chrome-launcher": "~3.1.1",
@@ -37,6 +40,7 @@
         "npm-check-updates": "^16.3.15",
         "tailwindcss": "^3.2.1",
         "tailwindcss-logical": "^3.0.0",
-        "typescript": "~4.8.4"
+        "typescript": "~4.8.4",
+        "webpack-bundle-analyzer": "^4.7.0"
     }
 }

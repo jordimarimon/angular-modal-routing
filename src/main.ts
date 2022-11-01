@@ -1,4 +1,4 @@
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { APP_BASE_HREF, HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { enableProdMode, importProvidersFrom } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
@@ -14,7 +14,14 @@ if (environment.production) {
 
 const providers = [
     importProvidersFrom(RouterModule.forRoot(APP_ROUTES)),
-    {provide: LocationStrategy, useClass: HashLocationStrategy},
+    {
+        provide: LocationStrategy,
+        useClass: HashLocationStrategy,
+    },
+    {
+        provide: APP_BASE_HREF,
+        useValue: environment.production ? '/' : '/angular-modal-routing/',
+    },
 ];
 
 bootstrapApplication(AppComponent, {providers}).catch(err => console.error(err));

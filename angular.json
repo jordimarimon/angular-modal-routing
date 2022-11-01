@@ -17,7 +17,7 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                        "outputPath": "dist/test-app",
+                        "outputPath": "dist",
                         "index": "src/index.html",
                         "main": "src/main.ts",
                         "polyfills": "src/polyfills.ts",
@@ -34,6 +34,7 @@
                     },
                     "configurations": {
                         "production": {
+                            "baseHref": "/angular-modal-routing/",
                             "budgets": [
                                 {
                                     "type": "initial",
@@ -52,7 +53,26 @@
                                     "with": "src/environments/environment.prod.ts"
                                 }
                             ],
-                            "outputHashing": "all"
+                            "optimization": {
+                                "scripts": true,
+                                "styles": {
+                                    "inlineCritical": false,
+                                    "minify": true
+                                },
+                                "fonts": {
+                                    "inline": true
+                                }
+                            },
+                            "aot": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "namedChunks": false,
+                            "commonChunk": true,
+                            "extractLicenses": true,
+                            "buildOptimizer": true,
+                            "vendorChunk": true,
+                            "statsJson": true,
+                            "deleteOutputPath": true
                         },
                         "development": {
                             "buildOptimizer": false,
