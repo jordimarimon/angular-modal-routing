@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+
+import { createRouterConfig } from './create-router-config';
 
 
 @Component({
@@ -54,6 +56,13 @@ import { RouterModule } from '@angular/router';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
+
+
+    constructor(
+        private readonly _router: Router,
+    ) {
+        this._router.resetConfig(createRouterConfig(this._router.config));
+    }
 
 
 }

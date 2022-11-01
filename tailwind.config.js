@@ -33,7 +33,17 @@ module.exports = {
             xl: '80em', // 1280px
         },
 
-        extend: {},
+        extend: {
+            width: {
+                md: '48em',
+            },
+            maxWidth: {
+                screen: '100vw',
+            },
+            minHeight: {
+                150: '37.5rem',
+            }
+        },
     },
 
     // Tailwind plugins
